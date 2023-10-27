@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <style>
+      body {
+        background-image: url("./bg.jpg"); /* Make sure 'background.jpg' is in the same directory as this HTML file */
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      .logo {
+        width: 100px; /* Adjust the width of the logo as needed */
+        height: auto;
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .countdown-item {
+        font-size: 24px;
+        margin: 0 10px;
+      }
+
+      span {
+        font-size: 36px;
+        font-weight: bold;
+        animation: countdown 1s linear infinite;
+      }
+
+      @keyframes countdown {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .coming-soon {
+        font-size: 24px;
+        margin: 20px 0;
+        animation: fadein 2s;
+      }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 24px;
+}
+
+p {
+  font-weight: 700;
+  text-align: center;
+  font-size: 40px;
+  font-family: Hack, sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  letter-spacing: 5px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shine 5s linear infinite;
+  position: relative;
+}
+
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  100% {
+    background-position-x: 500%;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="./logoFinal1.png" alt="Logo" class="logo" />
+      <div class="countdown">
+        <div class="countdown-item">
+          <span id="days">00</span>
+          Days
+        </div>
+        <div class="countdown-item">
+          <span id="hours">00</span>
+          Hours
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">00</span>
+          Minutes
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">00</span>
+          Seconds
+        </div>
+      </div>
+      <div class="">
+        <p>
+          Coming Soon
+        </p>
+      </div>
+    </div>
+    <script>
+      function updateCountdown() {
+        const targetDate = new Date("2023-10-31 00:00:00").getTime();
+        const currentDate = new Date().getTime();
+        const timeLeft = targetDate - currentDate;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = formatTime(days);
+        document.getElementById("hours").textContent = formatTime(hours);
+        document.getElementById("minutes").textContent = formatTime(minutes);
+        document.getElementById("seconds").textContent = formatTime(seconds);
+      }
+
+      function formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
