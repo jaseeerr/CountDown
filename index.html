@@ -6,7 +6,7 @@
     <title>Countdown Timer</title>
     <style>
       body {
-        background-image: url("./bg.jpg"); /* Make sure 'background.jpg' is in the same directory as this HTML file */
+        background-image: url("./HonorWatches.jpg"); /* Make sure 'background.jpg' is in the same directory as this HTML file */
         background-size: cover;
         background-position: center;
         font-family: Arial, sans-serif;
@@ -31,7 +31,8 @@
       .countdown {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: start;
+        margin-bottom: 250px;
       }
 
       .countdown-item {
@@ -93,6 +94,7 @@ p {
   background-size: 80%;
   animation: shine 5s linear infinite;
   position: relative;
+  margin-bottom: 100px;
 }
 
 @keyframes shine {
@@ -108,7 +110,7 @@ p {
   </head>
   <body>
     <div class="container">
-      <img src="./logoFinal1.png" alt="Logo" class="logo" />
+      <!-- <img src="./logoFinal1.png" alt="Logo" class="logo" /> -->
       <div class="countdown">
         <div class="countdown-item">
           <span id="days">00</span>
@@ -126,16 +128,18 @@ p {
           <span id="seconds">00</span>
           Seconds
         </div>
+     
       </div>
-      <div class="">
-        <p>
-          Coming Soon
-        </p>
-      </div>
+     
+    </div>
+    <div >
+      <p>
+        Coming Soon
+      </p>
     </div>
     <script>
       function updateCountdown() {
-        const targetDate = new Date("2023-10-31 00:00:00").getTime();
+        const targetDate = new Date("2023-11-28 00:00:00").getTime();
         const currentDate = new Date().getTime();
         const timeLeft = targetDate - currentDate;
 
